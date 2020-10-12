@@ -10,7 +10,7 @@ LIB_PATH=./include
 INPUT_PATH=./input
 OUTPUT_PATH=./output
 INPUT_GENERATOR_TARGET=./generator
-RUN_TEST=02
+RUN_TEST=03
 
 SOURCE_EXT := cpp
 SOURCES := $(shell find $(SOURCE_PATH) -path '*.$(SOURCE_EXT)')
@@ -38,7 +38,7 @@ mem:
 $(INPUT_GENERATOR_TARGET): generate_in.cpp
 	$(CC) $(CFLAGS) -o $(INPUT_GENERATOR_TARGET) generate_in.cpp
 
-time: $(INPUT_GENERATOR_TARGET)
+time: $(INPUT_GENERATOR_TARGET) $(TARGET_NAME)
 	@bash time.sh $(TARGET_NAME) $(TMPOUT_NAME) $(INPUT_GENERATOR_TARGET)
 
 tests:
