@@ -30,7 +30,7 @@
 *.exe
 *.out
 *.app
-build/tp1
+build/
 
 # Output logs
 output/**/*
