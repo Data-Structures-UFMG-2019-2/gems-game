@@ -10,7 +10,7 @@ LIB_PATH=./include
 INPUT_PATH=./input
 OUTPUT_PATH=./output
 INPUT_GENERATOR_TARGET=./generator
-RUN_TEST=08
+RUN_TEST=02
 
 SOURCE_EXT := cpp
 SOURCES := $(shell find $(SOURCE_PATH) -path '*.$(SOURCE_EXT)')
@@ -20,7 +20,6 @@ all: $(TARGET_NAME)
 
 $(BUILD_PATH)/%.o: $(SOURCE_PATH)/%.cpp $(LIB_PATH)/%.hpp
 	mkdir -p $(BUILD_PATH)
-	mkdir -p $(BUILD_PATH)/list
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 $(TARGET_NAME): $(OBJECTS) ./main.cpp
@@ -31,7 +30,7 @@ clean:
 	rm $(TARGET_NAME)
 
 run:
-	$(TARGET_NAME)
+	$(TARGET_NAME) $(INPUT_PATH)/$(RUN_TEST).in
 
 mem:
 	valgrind --leak-check=full --show-leak-kinds=all $(TARGET_NAME) $(INPUT_PATH)/$(RUN_TEST).in > ./output/mem.log
