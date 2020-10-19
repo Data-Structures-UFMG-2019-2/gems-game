@@ -11,6 +11,7 @@ class GemsGame{
         GemsGame(std::string filename);
         ~GemsGame();
         int knapsack(); // O(nm)
+        int brtue_force(); // O(?)
         int read_input(std::string filename); // O(1)
 };
 

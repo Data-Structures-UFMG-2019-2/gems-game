@@ -41,6 +41,10 @@ int GemsGame::knapsack(){ // O(nm)
     return -1;
 }
 
+int GemsGame::brtue_force(){
+    return -1;
+}
+
 int GemsGame::read_input(std::string filename){
     std::ifstream file = std::ifstream(filename);
     if(!file.is_open()){
