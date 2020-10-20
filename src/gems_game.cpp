@@ -14,9 +14,17 @@ GemsGame::~GemsGame(){
     free(this->gems);
 }
 
-int GemsGame::knapsack(){ // O(nm)
+int GemsGame::get_size(){
+    return this->size;
+}
+
+int GemsGame::get_half_sum(){
+    return this->half_sum;
+}
+
+int GemsGame::knapsack(){
     int array_sum = sum(this->gems, this->size);
-    int m = (this->size+1), n = floor(((float)array_sum)/2.0) + 1;
+    int m = (this->size+1), n = this->half_sum;
     bool** occurences = Matrix::create(m, n);
 
     for(int i = 1; i < m; i++){
@@ -41,11 +49,9 @@ int GemsGame::knapsack(){ // O(nm)
     return -1;
 }
 
-int GemsGame::brtue_force(){
-    return -1;
-}
-
 int GemsGame::read_input(std::string filename){
+    int sum = 0;
+
     std::ifstream file = std::ifstream(filename);
     if(!file.is_open()){
         throw "File not found";
@@ -55,6 +61,8 @@ int GemsGame::read_input(std::string filename){
     this->gems = (int*) malloc(this->size*sizeof(int));
     for(int i = 0; i < this->size; i++){
         file >> this->gems[i];
+        sum += this->gems[i];
     }
+    this->half_sum = floor(((float)sum)/2.0) + 1;
     return this->size;
 }

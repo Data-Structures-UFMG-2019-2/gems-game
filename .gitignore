@@ -34,6 +34,7 @@ build/
 
 # Output logs
 output/**/*
+!output/time_log.csv
 tp2
 generator
 
